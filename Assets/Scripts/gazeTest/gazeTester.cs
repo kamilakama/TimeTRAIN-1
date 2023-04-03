@@ -37,7 +37,27 @@ public class gazeTester : MonoBehaviour
                 }
             }
 
+            if (hit.transform.gameObject.tag == "LoadLevel") //Objects should have a tag and a RigidBody to be hit
+            {
+                Debug.Log("Trigger Load"); //Debug line to make sure a tagged object is hit and reported
+
+                timeCountdown = timeCountdown -= Time.deltaTime; //Start counting down
+                Debug.Log("Loading Level " + hit.transform.gameObject.GetComponent<startgame>().levelNumber);
+
+                if (timeCountdown < 0) //Once countdown has passed 0
+                {
+                    hitObject = hit.transform.gameObject; //Set the object hit as the hitObject variable
+
+                    hitObject.GetComponent<startgame>().startGame(); //Set the hitObject material
+                    timeCountdown = timeStatic; //Reset the timeCountdown
+                }
+            }
+
+            else if (hit.transform.gameObject == null)
+                timeCountdown = timeStatic;
+
             Debug.Log("Did Hit"); //Debug line for all hit objects
+            Debug.Log(hit.transform.gameObject.name);
         }
     }
 }
