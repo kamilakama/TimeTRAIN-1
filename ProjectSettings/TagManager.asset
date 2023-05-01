@@ -8,6 +8,8 @@ TagManager:
   - Train
   - Skybox Collider
   - AudioObject
+  - Music
+  - Penguin
   layers:
   - Default
   - TransparentFX
