@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class gazeTesterNew : MonoBehaviour
 {
     float timeStatic;
+    float timeLooking;
     public float timeCountdown;
     GameObject hitObject;
     public Material newM;
@@ -14,81 +15,87 @@ public class gazeTesterNew : MonoBehaviour
     public Image circle;
     public Image circleFilling;
     public Text text;
+    public GameObject penguinObject;
+    public float timeUntilAudio;
+    public AudioClip penguinAudio;
 
-    IEnumerator Loadlevel ( )
+    bool hasPlayedAudio = false;
+
+    IEnumerator Loadlevel()
     {
-        loadScreen.SetActive (true);
+        loadScreen.SetActive(true);
         AsyncOperation operation = SceneManager.LoadSceneAsync("TrainSCENE1");
-        //operation.allowSceneActivation = false;
-        //while (!operation.isDone)
-        //{
-        //    circleFilling.fillAmount = operation.progress;
-        //    //text.text = operation.progress * 100 + "%";
-        //    
-        //}
         yield return null;
     }
 
     private void Start()
     {
-        timeStatic = timeCountdown; //Set timeStatic (reset time) to same as the user defined countdown time in inspector at start
+        timeStatic = timeCountdown;
+        timeLooking = 0f; // Initialize time looking at 0
+        hasPlayedAudio = false; // Set hasPlayedAudio to false initially
     }
 
     void FixedUpdate()
     {
-
-        RaycastHit hit; //Raycaster
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)) //Raycast from transform.position (camera center point), forward direction from camera, reference to what is hit, distance Raycast should travel to detect objects hit
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow); //Raycast debug visible line for testing
-            if (hit.transform.gameObject.tag == "Player") //Objects should have a tag and a RigidBody to be hit
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            if (hit.transform.gameObject.tag == "Player")
             {
-                Debug.Log("Hit Player"); //Debug line to make sure a tagged object is hit and reported
+                Debug.Log("Hit Player");
 
-                timeCountdown = timeCountdown -= Time.deltaTime; //Start counting down
+                timeCountdown = timeCountdown -= Time.deltaTime;
 
-                if (timeCountdown < 0) //Once countdown has passed 0
+                if (timeCountdown < 0)
                 {
-                    hitObject = hit.transform.gameObject; //Set the object hit as the hitObject variable
-                    hitObject.GetComponent<Renderer>().material = newM; //Set the hitObject material
+                    hitObject = hit.transform.gameObject;
+                    hitObject.GetComponent<Renderer>().material = newM;
 
-                    timeCountdown = timeStatic; //Reset the timeCountdown
+                    timeCountdown = timeStatic;
                 }
             }
 
-            if (hit.transform.gameObject.tag == "LoadLevel") //Objects should have a tag and a RigidBody to be hit
+            else if (hit.transform.gameObject.tag == "Penguin")
             {
-                Debug.Log("Trigger Load"); //Debug line to make sure a tagged object is hit and reported
+                Debug.Log("Gazing at penguin");
 
-                timeCountdown = timeCountdown -= Time.deltaTime; //Start counting down
-                //Debug.Log("Loading Level " + hit.transform.gameObject.GetComponent<startgame>().levelNumber);
+                timeLooking += Time.deltaTime;
+
+                if (timeLooking >= timeUntilAudio && !hasPlayedAudio)
+                {
+                    Debug.Log("Played Penguin Audio");
+                    AudioSource penguinAudioSource = penguinObject.GetComponent<AudioSource>();
+                    penguinAudioSource.PlayOneShot(penguinAudio);
+                    hasPlayedAudio = true;
+                    timeLooking = 0f;
+                }
+                else if (hasPlayedAudio)
+                {
+                    timeLooking = 0f;
+                }
+            }
+
+            else if (hit.transform.gameObject.tag == "LoadLevel")
+            {
+                Debug.Log("Trigger Load");
+
+                timeCountdown = timeCountdown -= Time.deltaTime;
 
                 circle.gameObject.SetActive(true);
 
-                if (timeCountdown < 0) //Once countdown has passed 0
+                if (timeCountdown < 0)
                 {
-                    hitObject = hit.transform.gameObject; //Set the object hit as the hitObject variable
+                    hitObject = hit.transform.gameObject;
                     StartCoroutine(Loadlevel());
-                    //hitObject.GetComponent<startgame>().startGame(); //Set the hitObject material
-                    timeCountdown = timeStatic; //Reset the timeCountdown
+                    timeCountdown = timeStatic;
                 }
-            else if (hit.transform.gameObject == null)
-            {
-                timeCountdown = timeStatic;
-                circle.gameObject.SetActive(false);
-
-                Debug.Log("Did Hit"); //Debug line for all hit objects
-                Debug.Log(hit.transform.gameObject.name);
             }
-            }
-
-            
-
             else
             {
                 timeCountdown = timeStatic;
                 circle.gameObject.SetActive(false);
+                timeLooking = 0f;
 
                 Debug.Log("Gazing at the air");
             }
