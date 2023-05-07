@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class FadeOUTcamera : MonoBehaviour
 {
-    [Range(1, 0)] public float alpha;
+    [Range(0, 1)] public float alpha;
     public Image image;
 
     void Start()
