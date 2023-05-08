@@ -13618,14 +13618,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -2.910382e-11, y: -0.08343151, z: 2.1827866e-11, w: 0.9965135}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 786803439}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -9.572, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -44830,7 +44830,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 372275c12b08e4944928c05f906db8fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47494,17 +47494,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8996e0dd2988d4740a71906dfcc1c336,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: 0.246
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8996e0dd2988d4740a71906dfcc1c336,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.992
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8996e0dd2988d4740a71906dfcc1c336,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.371
+      value: 30.365
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8996e0dd2988d4740a71906dfcc1c336,
         type: 3}
@@ -55916,9 +55916,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPrefabs:
-  - {fileID: 1584890360577559812, guid: 678aa18ce7d9e234fab6302451cbba41, type: 3}
-  - {fileID: 6511791096160217577, guid: 1f55b8e03949c1343be027a7eb4fcb95, type: 3}
   - {fileID: 1584890360577559812, guid: ceb98993399c0f6468e031c1aa8a3ad7, type: 3}
+  - {fileID: 8735077929324088032, guid: 073ca97e0a3a5964e8dd96807157ac21, type: 3}
+  - {fileID: 1584890360577559812, guid: 678aa18ce7d9e234fab6302451cbba41, type: 3}
   numObjectsToSpawn: 1
   spawnDelay: 5
   objectLifespan: 10
