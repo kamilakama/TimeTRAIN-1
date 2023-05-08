@@ -10,6 +10,8 @@ TagManager:
   - AudioObject
   - Music
   - Penguin
+  - Newspaper
+  - Fox
   layers:
   - Default
   - TransparentFX
