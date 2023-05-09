@@ -12,6 +12,7 @@ TagManager:
   - Penguin
   - Newspaper
   - Fox
+  - Fox2
   layers:
   - Default
   - TransparentFX

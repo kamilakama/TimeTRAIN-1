@@ -13,7 +13,7 @@ public class gazeontrain : MonoBehaviour
     [SerializeField] Text text;
     [SerializeField] GameObject newspaperObject;
     [SerializeField] GameObject foxObject;
-
+    
     private float timeLooking = 0f;
     private GameObject hitObject;
 
@@ -65,9 +65,6 @@ public class gazeontrain : MonoBehaviour
                         Renderer foxRenderer = foxObject.GetComponent<Renderer>();
                         foxRenderer.material = newMaterial;
                     }
-
-                    circle.gameObject.SetActive(false);
-                    timeLooking = 0f;
                 }
             }
             else
