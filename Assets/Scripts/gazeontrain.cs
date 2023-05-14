@@ -62,6 +62,8 @@ public class gazeontrain : MonoBehaviour
                     {
                         Debug.Log("Fox interaction triggered");
 
+                        StartCoroutine(ShowLoadingCircle());
+
                         Renderer foxRenderer = foxObject.GetComponent<Renderer>();
                         foxRenderer.material = newMaterial;
                     }
@@ -100,5 +102,6 @@ public class gazeontrain : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         loadScreen.SetActive(true);
+        circle.gameObject.SetActive(false); // Hide the loading circle after interaction
     }
 }
