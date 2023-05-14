@@ -11,7 +11,7 @@ public class FadeOUTcamera : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(FadeOutAfterTime(15f)); // Start coroutine to fade out after 3 minutes and 15 seconds (195 seconds)
+        StartCoroutine(FadeOutAfterTime(195f)); // Start coroutine to fade out after 3 minutes and 15 seconds (195 seconds)
     }
 
     IEnumerator FadeOutAfterTime(float time)
