@@ -2905,7 +2905,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498765963}
   m_LocalRotation: {x: 0.0075146644, y: 0.43787125, z: -0.006707225, w: 0.8989812}
-  m_LocalPosition: {x: -51.6, y: 8.2, z: -55.3}
+  m_LocalPosition: {x: -51.596, y: 8.413, z: -55.298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4177,14 +4177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d82ab14b06b64395fe6a5d047f6e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCountdown: 3
+  timeCountdown: 2
   newM: {fileID: 2100000, guid: 5c2ac6f8f7884e345b61271325e42480, type: 2}
   loadScreen: {fileID: 389122650145396149}
   circle: {fileID: 1035192545}
   circleFilling: {fileID: 379461040}
   text: {fileID: 0}
   penguinObject: {fileID: 1020825258}
-  timeUntilAudio: 3
+  timeUntilAudio: 2
   penguinAudio: {fileID: 8300000, guid: 3951f49dbd4597247ad7d51fb591240d, type: 3}
 --- !u!1 &663226899
 GameObject:
